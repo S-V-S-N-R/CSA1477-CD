@@ -1,0 +1,38 @@
+%{
+
+#include<stdio.h>
+
+%}
+
+%%
+
+main|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|g
+
+oto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|unsigned|voi
+
+d|printf|while {printf("%s is a Keyword",yytext);}
+[a-z]([a-z]|[0-9])* {printf("%s is an Identfier",yytext);}
+
+[0-9]* {printf("%d is a Number",yytext);}
+
+%%
+
+int main()
+
+{
+
+char inp[100];
+
+printf("Enter the Input : ");
+
+yylex();
+
+return 0;
+
+}
+
+int yywrap()
+
+{
+
+}

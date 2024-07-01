@@ -1,0 +1,32 @@
+include <stdio.h>
+
+int main() 
+
+{
+char a, b, c, f;
+
+ char x;
+
+ printf("Enter the values of a, b, c, and f: ");
+
+ scanf("%c %c %c %c", &a, &b, &c, &f);
+
+ printf("\nThree Address Code:\n");
+
+ printf("t1 = a + b\n");
+
+ printf("t2 = b - c\n");
+
+ printf("t3 = t1 / t2\n");
+
+ printf("t4 = a + b\n");
+
+ printf("t5 = b - c\n");
+
+ printf("t6 = t4 * t5\n");
+
+ printf("t7 = t3 - t6\n");
+
+ printf("x = t7 + f\n");
+
+}

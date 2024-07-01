@@ -1,0 +1,25 @@
+%
+
+abc      { printf("ABC"); }
+
+.        { putchar(yytext[0]); }
+
+%%
+
+
+
+int yywrap() {
+
+    return 0; // Indicate that there are no more input files
+
+}
+
+
+
+int main() {
+
+    yylex();
+
+    return 0;
+
+}

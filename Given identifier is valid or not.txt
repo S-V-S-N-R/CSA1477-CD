@@ -1,0 +1,57 @@
+%{
+
+#include <stdio.h>
+
+
+
+int space_count = 0;
+
+int newline_count = 0;
+
+
+
+int yywrap(void) {
+
+    return 1; // indicate end of input
+
+}
+
+
+
+%}
+
+
+
+%%
+
+[ \t]+      { space_count += yyleng; }
+
+\n         { newline_count++; }
+
+.          ; // skip other characters
+
+
+
+%%
+
+
+
+int main() {
+
+    printf("Enter a text (Ctrl+D to end input on Unix/Linux, Ctrl+Z on Windows):\n");
+
+
+
+    yywrap(); // invoke yywrap to start processing
+
+
+
+    printf("Number of whitespaces: %d\n", space_count);
+
+    printf("Number of newline characters: %d\n", newline_count);
+
+
+
+    return 0;
+
+}

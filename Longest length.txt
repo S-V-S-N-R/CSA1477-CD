@@ -1,0 +1,49 @@
+Lex code to find the length of the longest word */
+
+
+
+%{
+
+#include <stdio.h>
+
+int counter = 0;
+
+%}
+
+
+
+%%
+
+[a-zA-Z]+ {
+
+    if (yyleng > counter) {
+
+        counter = yyleng;
+
+    }
+
+}
+
+%%
+
+
+
+int yywrap() {
+
+    return 1; // Indicate that there are no more input files
+
+}
+
+
+
+int main() {
+
+    yylex();
+
+    printf("largest: %d\n", counter);
+
+    return 0;
+
+}
+
+         

@@ -1,0 +1,67 @@
+%{
+
+#include <stdio.h>
+
+#include <string.h>
+
+
+
+int count = 0;
+
+char target_word[50];
+
+
+
+%}
+
+
+
+%%
+
+[ \t\n]+     ; // skip whitespace
+
+[a-zA-Z]+    { if(strcmp(yytext, target_word) == 0) count++; }
+
+.|\n         ; // skip other characters
+
+
+
+%%
+
+
+
+int yywrap() {
+
+    return 1; // indicate end of input
+
+}
+
+
+
+int main() {
+
+    printf("Enter a sentence: ");
+
+    char sentence[1000];
+
+    fgets(sentence, sizeof(sentence), stdin);
+
+
+
+    printf("Enter the word to count: ");
+
+    scanf("%s", target_word);
+
+
+
+    yy_scan_string(sentence);
+
+    yylex();
+
+
+
+    printf("Frequency of '%s' in the sentence: %d\n", target_word, count);
+
+
+
+    return 0;
